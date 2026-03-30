@@ -1,11 +1,6 @@
 # Mischief Managed - Task Tracker Checklist
 
 ## Phase 1: Design & Planning
-- [x] Analyze design reference and extract aesthetic
-  - [x] Soft cream/beige backgrounds
-  - [x] Vibrant orange CTAs
-  - [x] Playful icons and illustrations
-  - [x] Generous rounded corners
 - [x] Document all screens and user flows (see SCREENS.md)
   - [x] Authentication screens (sign up, login)
   - [x] Home/Today screen
@@ -21,10 +16,6 @@
   - [x] Categories and achievements
   - [x] RLS policies
   - [x] Database functions and triggers
-- [ ] Create Figma design system (optional - can design in code)
-  - [ ] Color palette variables
-  - [ ] Typography scales
-  - [ ] Component library
 
 ## Phase 2: Project Setup
 - [ ] Initialize Next.js project with TypeScript

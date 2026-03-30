@@ -52,9 +52,10 @@
   - Current day highlighted
   - Tap to switch days
 
-- **Quick Stats Card** (optional)
-  - Streak counter with fire emoji
-  - Today's completed tasks
+- **Quick Stats Cards** (3 cards)
+  - Tasks Today (🎯) - count of tasks due today
+  - Longest Streak (🔥) - best current habit streak (optional for v1)
+  - Completed (✅) - total completed tasks/habits all time
 
 - **Reminder/Tip Card** (like "Set the reminder" in reference)
   - Contextual tips

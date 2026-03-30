@@ -28,10 +28,7 @@ Supabase provides this table automatically through `auth.users`. We'll extend it
 - `full_name` (text, nullable)
 - `avatar_url` (text, nullable)
 - `onboarding_completed` (boolean, default: false)
-- `streak_start_date` (date, nullable)
-- `current_streak` (integer, default: 0)
-- `longest_streak` (integer, default: 0)
-- `total_points` (integer, default: 0)
+- `total_points` (integer, default: 0) // for gamification (future)
 - `preferences` (jsonb, nullable)
   ```json
   {
@@ -292,8 +289,10 @@ CREATE TRIGGER update_profiles_updated_at
 -- Repeat for tasks, habits, etc.
 ```
 
-### 3. calculate_streak()
-**Purpose:** Calculate current streak for a habit
+### 3. calculate_habit_streak() (Optional - for real-time streak calculation)
+**Purpose:** Calculate current streak for a habit on-demand
+
+**Note:** Streaks are stored in the `habits` table and updated via triggers when completions are added. This function is for validation or recalculation if needed.
 
 ```sql
 CREATE FUNCTION calculate_habit_streak(habit_uuid uuid)
@@ -301,18 +300,29 @@ RETURNS integer AS $$
 DECLARE
   streak_count integer := 0;
   check_date date := CURRENT_DATE;
+  habit_days integer[];
 BEGIN
-  -- Loop backwards from today until we find a gap
+  -- Get the habit's frequency days
+  SELECT frequency_days INTO habit_days
+  FROM habits WHERE id = habit_uuid;
+
+  -- Loop backwards from today, only checking scheduled days
   LOOP
-    IF EXISTS (
-      SELECT 1 FROM habit_completions
-      WHERE habit_id = habit_uuid
-      AND completion_date = check_date
-    ) THEN
-      streak_count := streak_count + 1;
-      check_date := check_date - INTERVAL '1 day';
+    -- Check if this day is a scheduled habit day
+    IF EXTRACT(DOW FROM check_date)::integer = ANY(habit_days) THEN
+      IF EXISTS (
+        SELECT 1 FROM habit_completions
+        WHERE habit_id = habit_uuid
+        AND completion_date = check_date
+      ) THEN
+        streak_count := streak_count + 1;
+        check_date := check_date - INTERVAL '1 day';
+      ELSE
+        EXIT; -- Streak broken
+      END IF;
     ELSE
-      EXIT;
+      -- Skip non-scheduled days
+      check_date := check_date - INTERVAL '1 day';
     END IF;
   END LOOP;
 

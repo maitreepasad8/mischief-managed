@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+:root {
+  /* Base backgrounds - soft cream/beige aesthetic */
+  --background: #FAF8F3;
+  --background-card: #FFFFFF;
+  --background-elevated: #FFFBF5;
+  --foreground: #2D2D2D;
+
+  /* Text colors */
+  --text-primary: #2D2D2D;
+  --text-secondary: #6B6B6B;
+  --text-tertiary: #8A8A8A;
+
+  /* Primary - vibrant orange */
+  --color-primary: #FF7A00;
+  --color-primary-hover: #E66D00;
+  --color-primary-light: #FFA347;
+
+  /* Secondary - soft sage green */
+  --color-secondary: #81B29A;
+  --color-secondary-hover: #71A28A;
+  --color-secondary-light: #A8D5BA;
+
+  /* Priority colors */
+  --color-priority-high: #E63946;
+  --color-priority-medium: #F4A261;
+  --color-priority-low: #81B29A;
+
+  /* Status colors */
+  --color-status-todo: #A0AEC0;
+  --color-status-in-progress: #4299E1;
+  --color-status-done: #48BB78;
+
+  /* Accent colors - playful touches */
+  --color-accent-yellow: #F4D35E;
+  --color-accent-purple: #9B7EBD;
+  --color-accent-pink: #F6A9C8;
+  --color-accent-blue: #6FB3DD;
+  --color-accent-peach: #FFD4BA;
+  --color-accent-mint: #B5E2CF;
+
+  /* Borders */
+  --color-border: #E8E5DD;
+  --color-border-focus: #FF7A00;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  /* Border radius - generous rounded corners */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* Spacing scale */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+}
+
+@theme inline {
+  /* Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--background-card);
+  --color-elevated: var(--background-elevated);
+
+  /* Primary palette */
+  --color-primary-*: initial;
+  --color-primary-DEFAULT: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-light: var(--color-primary-light);
+
+  /* Secondary palette */
+  --color-secondary-*: initial;
+  --color-secondary-DEFAULT: var(--color-secondary);
+  --color-secondary-hover: var(--color-secondary-hover);
+  --color-secondary-light: var(--color-secondary-light);
+
+  /* Priority colors */
+  --color-priority-*: initial;
+  --color-priority-high: var(--color-priority-high);
+  --color-priority-medium: var(--color-priority-medium);
+  --color-priority-low: var(--color-priority-low);
+
+  /* Status colors */
+  --color-status-*: initial;
+  --color-status-todo: var(--color-status-todo);
+  --color-status-in-progress: var(--color-status-in-progress);
+  --color-status-done: var(--color-status-done);
+
+  /* Accent colors */
+  --color-accent-*: initial;
+  --color-accent-yellow: var(--color-accent-yellow);
+  --color-accent-purple: var(--color-accent-purple);
+  --color-accent-pink: var(--color-accent-pink);
+  --color-accent-blue: var(--color-accent-blue);
+  --color-accent-peach: var(--color-accent-peach);
+  --color-accent-mint: var(--color-accent-mint);
+
+  /* Text colors */
+  --color-text-*: initial;
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+
+  /* Border */
+  --color-border-*: initial;
+  --color-border-DEFAULT: var(--color-border);
+  --color-border-focus: var(--color-border-focus);
+
+  /* Border radius */
+  --radius-*: initial;
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-full: var(--radius-full);
+
+  /* Fonts */
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+}
+
+/* Global styles */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Custom scrollbar for cozy feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}

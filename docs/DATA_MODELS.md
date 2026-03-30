@@ -27,8 +27,6 @@ Supabase provides this table automatically through `auth.users`. We'll extend it
 - `id` (uuid, primary key, references auth.users.id)
 - `full_name` (text, nullable)
 - `avatar_url` (text, nullable)
-- `onboarding_completed` (boolean, default: false)
-- `total_points` (integer, default: 0) // for gamification (future)
 - `preferences` (jsonb, nullable)
   ```json
   {
